@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>折叠菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #menu{
+            width: 200px;
+            height: 200px;
+        }
+        #menu h3{
+            background: #000;
+            height: 50px;
+            line-height: 50px;
+            color: #ffffff;
+            cursor: pointer;
+
+
+        }
+        #menu .sub-menu{
+            display: none;
+            border: 2px solid #000000;
+        }
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li class="main-menu">
+        <h3 onselectstart = "return false">管理区</h3>
+        <ul class="sub-menu">
+            <li><a href="#"> 1111</a></li>
+            <li><a href="#"> 1111</a></li>
+            <li><a href="#"> 1111</a></li>
+        </ul>
+    </li>
+    <li class="main-menu">
+        <h3 onselectstart = "return false">交流区</h3>
+        <ul class="sub-menu">
+            <li><a href="#"> 1111</a></li>
+            <li><a href="#"> 1111</a></li>
+            <li><a href="#"> 1111</a></li>
+        </ul>
+    </li>
+</ul>
+<script>
+     var oMenu = document.getElementById('menu');
+     var aH3 = oMenu.getElementsByTagName('h3');
+     var aSubmenu = oMenu.getElementsByTagName('ul');
+     for(var i = 0;i<aH3.length;i++){
+     aH3[i].index = i;
+     aH3[i].bFlag = false;
+     aH3[i].onclick = function(){
+     if(this.bFlag){
+     aSubmenu[this.index].style.display = 'none';
+     }else {
+     aSubmenu[this.index].style.display = 'block';
+     }
+     this.bFlag = !this.bFlag;
+     }
+     }
+</script>
+</body>
+</html>
