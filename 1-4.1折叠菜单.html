@@ -71,6 +71,12 @@
         }*/
         var oMenu = document.getElementById('menu');
         var aLi = oMenu.getElementsByTagName('li');
+        var aSubmenu = oMenu.getElementsByTagName('ul');
+       for(var i = 0;i<aSubmenu.length;i++){
+           aSubmenu[i].onclick = function(e){
+               e.stopPropagation();
+           }
+       }
         for(var i = 0;i<aLi.length;i++){
             if(aLi[i].className =='main-menu'){
                  aLi[i].bFlag = false;
