@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            margin: 50px auto;
+            width: 520px;
+            height: 280px;
+            position: relative;
+        }
+        #nav li,#arrows span{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #000;
+            color: #ffffff;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        #nav .selected{
+            background: orange;
+        }
+        #nav{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #arrows{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        #img a{
+            display: none;
+        }
+   /*     #img a img{
+            width: 100px;
+            height: 100px;
+        }*/
+        #img a.selected{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="nav">
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="img">
+            <a class="selected" href="#"><img src="img/1.jpg"/></a>
+            <a href="#"><img src="img/2.jpg"/></a>
+            <a href="#"><img src="img/3.jpg"/></a>
+            <a href="#"><img src="img/4.jpg"/></a>
+        </div>
+        <div id="arrows">
+            <span id="prev">&lt;</span>
+            <span id="next">&gt;</span>
+        </div>
+    </div>
+<script>
+            var oMenu = document.getElementById('container');
+            var aLi = oMenu.getElementsByTagName('li');
+            var aA = oMenu.getElementsByTagName('a');
+            var oPrev = document.getElementById('prev');
+            var oNext = document.getElementById('next');
+            var iNow = 0;
+            for(var i=0; i<aLi.length;i++){
+                aLi[i].index = i;
+                aLi[i].onmouseover = function(){
+                  changeImg(this.index);
+                    iNow = this.index;
+              }
+            }
+            function changeImg(idx){
+                for(var i=0; i<aLi.length;i++){
+                    aLi[i].className = '';
+                    aA[i].className = '';
+                }
+                aLi[idx].className = 'selected';
+                aA[idx].className = 'selected';
+            }
+            oPrev.onclick = function(){
+                iNow--;
+                if(iNow == -1){
+                    iNow = aLi.length-1;
+                }
+                changeImg(iNow);
+            }
+            oNext.onclick = function(){
+                iNow++;
+                if(iNow == 4){
+                    iNow = 0;
+                }
+                changeImg(iNow);
+            }
+            var timer;
+            function run(){
+                timer = setInterval(function(){
+                    oNext.onclick();
+                },2000);
+            }
+            run();
+            oMenu.onmouseover = function(){
+                clearInterval(timer);
+            }
+            oMenu.onmouseout = function(){
+                run();
+            }
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
