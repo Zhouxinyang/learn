@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            margin: 50px auto;
+            width: 520px;
+            height: 280px;
+            position: relative;
+        }
+        #nav{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #img a{
+            display: none;
+        }
+        #img a.selected{
+            display: block;
+        }
+        #nav li,#arrows span{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            background: #000;
+            color: #ffffff;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        #nav li.selected{
+            background: orange;
+        }
+        #arrows{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="nav">
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    <div id="img">
+        <a href="#" class="selected"><img src="img/1.jpg"></a>
+        <a href="#"><img src="img/2.jpg"></a>
+        <a href="#"><img src="img/3.jpg"></a>
+        <a href="#"><img src="img/4.jpg"></a>
+    </div>
+    <div id="arrows">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+    </div>
+<script>
+    var oContainer = document.getElementById('container');
+    var aLi = oContainer.getElementsByTagName('li');
+    var aA = oContainer.getElementsByTagName('a');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var Non = 0;
+     for(var i=0; i<aLi.length; i++){
+         aLi[i].index = i;
+         aLi[i].onmouseover = function(){
+             for(var i=0; i<aLi.length; i++){
+                 aLi[i].className = '';
+                 aA[i].className = '';
+             }
+             Non = this.index;
+             this.className = 'selected';
+             aA[this.index].className = 'selected';
+         }
+     }
+    oPrev.onclick = function(){
+        Non--;
+        if(Non ==-1){
+            Non = aLi.length-1;
+        }
+        for(var i=0; i<aLi.length; i++){
+            aLi[i].className = '';
+            aA[i].className = '';
+        }
+        aLi[Non].className = 'selected';
+        aA[Non].className = 'selected';
+    }
+    oNext.onclick = function(){
+        Non++;
+        if(Non ==4){
+            Non = 0;
+        }
+        for(var i=0; i<aLi.length; i++){
+            aLi[i].className = '';
+            aA[i].className = '';
+        }
+        aLi[Non].className = 'selected';
+        aA[Non].className = 'selected';
+    }
+  /*  var timer;
+    function run(){
+        timer = setInterval(function(){oNext.onclick();},2000);
+    }
+    run();
+    oContainer.onmouseover = function(){
+        clearInterval(timer);
+    }
+    oContainer.onmouseout = function(){
+        run();
+    }*/
+    var timer;
+    function run(){
+        timer = setInterval(function(){oNext.onclick();},2000);
+    }
+    run();
+    oContainer.onmouseout= function(){
+        run();
+    }
+    oContainer.onmouseover = function(){
+        clearInterval(timer);
+    }
+
+
+</script>
+</body>
+</html>
