@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{width: 250px;
+            background: #cccccc;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>数字格式化</h1>
+    <form method="post" name = "form1">
+        <p>请输入要格式化的数字:
+            <input type="text" class=txt size="12" maxlength="20" name="str" /></p>
+        <p>请输入格式化后数字的长度:
+            <input type="text" class=txt size="12" maxlength="20" name="le" /></p>
+        <p>格式化后的数字:
+            <input type="text" class="txt" name="lastStr"/></p>
+        <input type="button" name="change" onclick=deal() value="转化"/>
+        <input type="reset" name="reset" value="刷新"/></form>
+</div>
+<script>
+    function formatNO(str,len){
+        var strLen = str.length;
+        for(i = 0; i<len-strLen;i++){
+            str = "0"+str;
+        }
+        return str;
+    }
+    function deal(){
+        if(form1.str.value==""){
+            alert("请输入要格式化的数字!");
+            form1.str.focus();
+            return false;
+        }
+        if(isNaN(form1.str.value)){
+            alert("你输入得到数字不正确");
+            form1.str.focus();
+            return false;
+        }
+        if(form1.le.value==""){
+            alert("请输入要格式化的长度!");
+            form1.le.focus();
+            return false;
+        }
+        if(isNaN(form1.le.value)){
+            alert("你输入的格式化长度不正确");
+            form1.le.focus();
+            return false;
+        }
+        form1.lastStr.value = formatNO(form1.str.value,form1.le.value);
+    }
+</script>
+</body>
+</html>
