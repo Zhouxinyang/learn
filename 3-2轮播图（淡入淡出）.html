@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>轮播图淡入淡出</title>
     <style>
         *{
             margin: 0;
@@ -11,37 +11,32 @@
         ul{
             list-style: none;
         }
-        a{
-            text-decoration: none;
-        }
         #container{
-            margin: 50px auto;
             width: 520px;
             height: 280px;
+            margin: 100px auto;
             position: relative;
         }
-        #nav li,#arrows span{
+        #tab li,#next,#prev{
+            background: #000000;
+            color: #ffffff;
             float: left;
             width: 20px;
             height: 20px;
-            background: #000;
-            color: #ffffff;
             margin-right: 10px;
-            text-align: center;
             line-height: 20px;
-            cursor: pointer;
-
+            text-align: center;
         }
-        #nav .selected{
-            background: orange;
+        #tab li.selected{
+            background: red;
         }
-        #nav{
+        #tab{
             position: absolute;
+            z-index: 9999;
             right: 10px;
             bottom: 10px;
-            z-index: 9999;
         }
-        #img a{
+        #content img{
             position: absolute;
             left: 0;
             top: 0;
@@ -52,22 +47,21 @@
             bottom: 10px;
             z-index: 9999;
         }
-
     </style>
 </head>
 <body>
 <div id="container">
-    <ul id="nav">
+    <ul id="tab">
         <li class="selected">1</li>
         <li>2</li>
         <li>3</li>
         <li>4</li>
     </ul>
-    <div id="img">
-        <a href="#"><img src="img/1.jpg"/></a>
-        <a href="#"><img src="img/2.jpg"/></a>
-        <a href="#"><img src="img/3.jpg"/></a>
-        <a href="#"><img src="img/4.jpg"/></a>
+    <div id="content">
+        <img src="img/1.jpg">
+        <img src="img/2.jpg">
+        <img src="img/3.jpg">
+        <img src="img/4.jpg">
     </div>
     <div id="arrows">
         <span id="prev">&lt;</span>
@@ -76,58 +70,65 @@
 </div>
 <script src="jslib.js"></script>
 <script>
-    var oMenu = document.getElementById('container');
-    var aLi = oMenu.getElementsByTagName('li');
-    var aA = oMenu.getElementsByTagName('a');
-    var oPrev = document.getElementById('prev');
+    var oContainer = document.getElementById('container');
+    var aImg = oContainer.getElementsByTagName('img');
+    var aLi = oContainer.getElementsByTagName('li');
     var oNext = document.getElementById('next');
-    var zIndex;
-    var idx= 0 ;
+    var oPrev = document.getElementById('prev');
+    var zIndex = aLi.length;
+    var iNow=0;
     for(var i=0; i<aLi.length;i++){
         aLi[i].index = i;
-        zIndex = aLi.length;
-        aA[i].style.zIndex = aLi.length-1;
+        aImg[i].style.zIndex = aLi.length-i;
         aLi[i].onmouseover = function(){
-            for(var i=0; i<aLi.length;i++){
-                aLi[i].className = '';
+            changeImg(this.index);
+            iNow=this.index;
         }
-            this.className = 'selected';
-            idx =this.index;
-            aA[this.index].style.opacity = 0;
-            aA[this.index].style.filter = "alpha(opacity=0)";
-            aA[this.index].style.zIndex = ++zIndex ;
-            animate(aA[this.index],{opacity:100})
-    }}
-    oPrev.onclick = function(){
-        --idx;
-        console.log(idx);
-        if(idx==-1){
-            idx=aLi.length-1;
-        }
-        for(var i=0; i<aLi.length;i++){
+    }
+    function changeImg(iNow){
+
+        for(var i =0;i<aLi.length;i++){
             aLi[i].className = '';
         }
-        aLi[idx].className = 'selected';
-        aA[idx].style.opacity = 0;
-        aA[idx].style.filter = "alpha(opacity=0)";
-        aA[idx].style.zIndex = ++zIndex ;
-        animate(aA[idx],{opacity:100})
+        aLi[iNow].className = 'selected';
+        aImg[iNow].style.opacity = 0;
+        aImg[iNow].style.filter = 'alpha(opacity=0)';
+        aImg[iNow].style.zIndex = ++zIndex;
+        animate(aImg[iNow],{opacity:100});
     }
-    oNext.onclick = function(){
-        ++idx;
-        console.log(idx);
-        if(idx==aLi.length){
-            idx=0;
+    oNext.onclick = oPrev.onclick = function(){
+        if(this==oNext){
+            iNow++;
+            if(iNow == aLi.length){
+                iNow = 0;
+            }
+            changeImg(iNow);
         }
-        for(var i=0; i<aLi.length;i++){
-            aLi[i].className = '';
+        if(this==oPrev){
+            iNow--;
+            if(iNow ==-1){
+                iNow = aLi.length-1;
+            }
+            changeImg(iNow);
         }
-        aLi[idx].className = 'selected';
-        aA[idx].style.opacity = 0;
-        aA[idx].style.filter = "alpha(opacity=0)";
-        aA[idx].style.zIndex = ++zIndex ;
-        animate(aA[idx],{opacity:100})
     }
+    var timer;
+    function run(){
+        timer = setInterval(function(){
+            oNext.onclick();
+        },500)
+    };
+    run();
+    oContainer.onmouseover= function(){
+        clearInterval(timer);
+    };
+    oContainer.onmouseout =function(){
+        run();
+    }
+
+
+
+
 </script>
 </body>
 </html>
