@@ -110,7 +110,7 @@
                 document.onmousemove = null;
                 document.onmouseup = null;
                 if(oNearest){
-                    animate(elem, oNearest.pos);//=>{left: xx, top: yy}
+                    animate(elem, oNearest.pos);
                     animate(oNearest, elem.pos);
                     var tempPos = elem.pos;
                     elem.pos = oNearest.pos;
