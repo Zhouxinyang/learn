@@ -146,7 +146,57 @@
                 document.write("x=" + x + "<br>");
             }
         }
-   getNum2();
+  // getNum2();
+    //习题5.4
+    function isPrime(){
+        var result=[] ;
+        for(var i = 100;i<=1000;i++){
+            var Flag = true ;
+            for(var j=2;j<i;j++){
+                if(i%j==0){
+                    Flag = false;
+                    break;
+                }
+            }
+            if(Flag){
+                result.push(i);
+            }
+        }
+        return result;
+    }
+   /* var arr = isPrime();
+    for(var i =0;i<arr.length;i++){
+        document.write(arr[i]+'&nbsp;');
+        if((i+1)%6==0){
+            document.write("<br>")
+        }
+    }*/
+    function starPic() {
+        for (var line = 1; line <= 5; line++) {
+            for(var k=1;k<=5-line;k++){
+                document.write('&nbsp');
+            }
+            for(var i = 1;i<=line;i++){
+                document.write('*'+'&nbsp;');
+            }
+            document.write('<br>');
+        }
+    };
+   // starPic();
+    function piResult(num){
+        var result = 0;
+        for(var i =1;i<=num;i++){
+        result += 4*Math.pow(-1,i-1)/(2*i-1);
+        }
+        return result;
+    }
+   /* var arr = [100,500,1000,10000];
+    for(var i=0;i<arr.length;i++){
+        document.write(piResult(arr[i])+"<br>");
+    }*/
+    function getRangeRandom(low, high){
+        return Math.floor(Math.random() * (high - low+1)) + low;
+    }
 
 </script>
 </body>
