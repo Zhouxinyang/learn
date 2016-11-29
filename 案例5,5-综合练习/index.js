@@ -84,22 +84,6 @@
     oContainer.onmouseover = function (){
         clearInterval(timer);
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     function changeImg(index){
         iNow= index;
         aPicImg[index].style.opacity = 0;
