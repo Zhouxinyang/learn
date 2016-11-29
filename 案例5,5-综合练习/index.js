@@ -73,16 +73,17 @@
     var timer;
     function run(){
         timer = setInterval(function(){
-            oNext.onmouseout();
+            oNext.onclick();
         },1000)
     };
     run();
     oContainer.onmouseout = function (){
-        clearInterval(timer);
+        run();
+
     }
     oContainer.onmouseover = function (){
-        run();
-    }
+        clearInterval(timer);
+    };
 
 
 
@@ -119,9 +120,15 @@
         }
         aSmallPic[index].style.opacity = 1;
         aSmallPic[index].style.filter = "alpha(opacity=100)";
-
-
-
-
+        var iLeft = 0;
+        if(index==0||index==1){
+            iLeft = 0
+        }else if(index==6||index==7){
+            iLeft = 4;
+        }else{
+            iLeft = index-1;
+        }
+        animate(oSmallPic,{left:-(iLeft*aSmallPic[0].offsetWidth)});
+        console.log(index);
     }
 })()
