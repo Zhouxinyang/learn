@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background: #000;
+            perspective: 1000px;
+            /*perspective-origin: 0 1000px;*/
+        }
+
+        #container{
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate1 2s linear infinite;
+        }
+        @keyframes rotate1 {
+            from{
+                /*transform: rotateY(-90deg) rotateX(-68deg);*/
+            }
+            to{
+                transform: rotateY(-360deg);
+            }
+        }
+        #small-cube{
+            width: 200px;
+            height: 200px;
+            margin: -400px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 2s linear infinite;
+        }
+        @keyframes rotate {
+            from{
+                /*transform: rotateY(-90deg) rotateX(-68deg);*/
+            }
+            to{
+                transform: rotateY(-360deg) rotateX(-360deg);
+            }
+        }
+
+
+
+        .cube {
+            width: 200px;
+            height: 200px;
+            background: #cccccc;
+            font-size: 70px;
+            border-radius: 10px;
+            position: absolute;
+            line-height: 200px;
+            text-align: center;
+            opacity: .6;
+            border: 1px #cccccc solid;
+        }
+        .img{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            border: 1px #cccccc solid;
+            top: 50px;
+            left: 50px;
+        }
+        .ione{
+            transform: rotateY(180deg) translateZ(50px);
+        }
+        .itwo{
+            transform: rotateX(90deg) translateZ(50px);
+        }
+        .ithree{
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+        .ifour{
+            transform:  rotateY(90deg) translateZ(50px);
+        }
+        .ifive{
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+        .isix{
+            transform: translateZ(50px)
+        }
+        .one{
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        .two{
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .three{
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .four{
+            transform:  rotateY(90deg) translateZ(100px);
+        }
+        .five{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        .six{
+            transform: translateZ(100px)
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="cube one">1</div>
+    <div class="cube two">2</div>
+    <div class="cube three">3</div>
+    <div class="cube four">4</div>
+    <div class="cube five">5</div>
+    <div class="cube six">6</div>
+</div>
+<div id="small-cube">
+    <img class="img ione" src="../imgs/1.jpg"/>
+    <img class="img itwo" src="../imgs/2.jpg"/>
+    <img class="img ithree" src="../imgs/3.jpg"/>
+    <img class="img ifour" src="../imgs/4.jpg"/>
+    <img class="img ifive" src="../imgs/5.jpg"/>
+    <img class="img isix" src="../imgs/6.jpg"/>
+</div>
+</body>
+</html>
