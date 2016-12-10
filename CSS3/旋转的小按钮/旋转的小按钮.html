@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 50px auto;
+            border: 1px #000000 solid;
+        }
+        #container img{
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            /*transform: rotate(0deg);*/
+            /*transform: rotate(360deg);*/
+        }
+        #container img:nth-child(1){
+
+            transition: all 0.6s linear ;
+        }
+        #container img:nth-child(2){
+
+            transition: all 0.8s linear ;
+        }
+        #container img:nth-child(3){
+
+            transition: all 1.0s linear ;
+        }
+        #container img:nth-child(4){
+
+            transition: all 1.2s linear ;
+        }
+        #container img:nth-child(5){
+
+            transition: all 1.4s linear ;
+        }
+        #container .close{
+            animation: close 1.4s ease forwards;
+        }
+        @keyframes close {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        #container .open{
+            animation: open 1.4s ease forwards;
+        }
+        @keyframes open {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <img src="img/close.png">
+    <img src="img/full.png">
+    <img src="img/open.png">
+    <img src="img/prev.png">
+    <img src="img/refresh.png">
+    <img src="img/home.png" class="">
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var aImg = oContainer.getElementsByTagName('img');
+    /*var bFlag = false;*/
+    aImg[aImg.length-1].onclick = function(){
+        if(this.className == 'open'){
+            aImg[aImg.length-1].className = 'close';
+            aImg[0].style.transform="translatey(0px)"+"rotate(0deg)";
+            aImg[1].style.transform="translate(0px,0px)"+"rotate(0deg)";
+            aImg[2].style.transform="translate(0px,0px)"+"rotate(0deg)";
+            aImg[3].style.transform="translate(0px,0px)"+"rotate(0deg)";
+            aImg[4].style.transform="translate(0px,0px)"+"rotate(0deg)";
+            for(var i=0;i<aImg.length-1;i++){
+                aImg[i].onclick = function(){
+                    this.style.transform = "scale(2)";
+                }
+            }
+
+        }else{
+            aImg[aImg.length-1].className = 'open';
+            aImg[0].style.transform="translatey(-160px)"+"rotate(360deg)";
+            aImg[1].style.transform="translate(-40px,-140px)"+"rotate(360deg)";
+            aImg[2].style.transform="translate(-80px,-120px)"+"rotate(360deg)";
+            aImg[3].style.transform="translate(-120px,-80px)"+"rotate(360deg)";
+            aImg[4].style.transform="translatex(-160px)"+"rotate(360deg)";
+
+        }
+        /*if(this.className == '' || this.className=='close'){
+        aImg[aImg.length-1].className = 'open';
+        }*/
+
+    }
+;</script>
+</body>
+</html>
