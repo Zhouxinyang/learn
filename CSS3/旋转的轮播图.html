@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;
+        padding: 0;
+        }
+        #container{
+            width: 500px;
+            height: 300px;
+            margin: 50px auto;
+            position: relative;
+        }
+        #content{
+            perspective: 1000px;
+        }
+        #content img{
+            width: 500px;
+            height: 300px;
+            position: absolute;
+            transform-origin:bottom ;
+            opacity: 0;
+        }
+
+        #next{
+            width: 50px;
+            height: 50px;
+            background: #cccccc;
+            border-radius: 50%;
+            font-size: 40px;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+            -webkit-text-stroke: 1px #000;
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            right: -100px;
+        }
+        #prev{
+            width: 50px;
+            height: 50px;
+            background: #cccccc;
+            border-radius: 50%;
+            font-size: 40px;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+            -webkit-text-stroke: 1px #000;
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            left: -100px;
+        }
+        #content .show{
+            animation: show 1s ease forwards;
+        }
+        @keyframes show {
+            from{
+                transform: rotateX(-180deg);
+            }
+            to{
+                opacity: 1;
+                transform: rotateX(-360deg);
+            }
+        }
+        #content .hide{
+            animation:hide 0.5s ease forwards;
+        }
+        @keyframes hide {
+            from{
+                opacity: 1;
+                transform: rotateX(0deg);
+            }
+            to{
+                transform: rotateX(-180deg);
+            }
+        }
+        #content .show2{
+            animation: show2 1s ease forwards;
+        }
+        @keyframes show2 {
+            from{
+                transform: rotateX(180deg);
+            }
+            to{
+                opacity: 1;
+                transform: rotateX(360deg);
+            }
+        }
+        #content .hide2{
+            animation:hide2 0.5s ease forwards;
+        }
+        @keyframes hide2 {
+            from{
+                opacity: 1;
+                transform: rotateX(0deg);
+            }
+            to{
+                transform: rotateX(180deg);
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+            <img src="imgs/1.jpg" style="z-index: 4" class="show">
+            <img src="imgs/2.jpg" style="z-index: 3">
+            <img src="imgs/3.jpg" style="z-index: 2">
+            <img src="imgs/4.jpg" style="z-index: 1">
+        </div>
+        <div id="arrows">
+            <span id="prev">&lt;</span>
+            <span id="next">&gt;</span>
+        </div>
+    </div>
+<script>
+    var oContainer = document.getElementById('container');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var oImg = document.getElementById('content');
+    var aImg = oImg.getElementsByTagName('img');
+    var iNow = 0;
+    for(var i=0;i<aImg.length;i++){
+        oPrev.onclick = oNext.onclick = function(){
+            if(this ==oPrev){
+                aImg[iNow].className = 'hide';
+                iNow--;
+                if(iNow==-1){
+                    iNow = aImg.length-1;
+                }
+                aImg[iNow].className = 'show';
+            }
+            if(this ==oNext){
+                aImg[iNow].className = 'hide2';
+                iNow++;
+                if(iNow==aImg.length){
+                    iNow = 0;
+                }
+                aImg[iNow].className = 'show2';
+            }
+        }
+    }
+</script>
+</body>
+</html>
