@@ -1,112 +1,86 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
+<!doctype html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>旋转的小按钮</title>
     <style>
         *{
             margin: 0;
             padding: 0;
         }
         #container{
-            width: 200px;
-            height: 200px;
+            width: 50px;
+            height: 50px;
+            margin: 200px auto;
             position: relative;
-            margin: 50px auto;
-            border: 1px #000000 solid;
+            border: 1px #000 solid;
         }
-        #container img{
+        img{
             position: absolute;
-            bottom: 0px;
-            right: 0px;
-            /*transform: rotate(0deg);*/
-            /*transform: rotate(360deg);*/
+            transition: all 0.5s ease ;
         }
-        #container img:nth-child(1){
-
-            transition: all 0.6s linear ;
-        }
-        #container img:nth-child(2){
-
-            transition: all 0.8s linear ;
-        }
-        #container img:nth-child(3){
-
-            transition: all 1.0s linear ;
-        }
-        #container img:nth-child(4){
-
-            transition: all 1.2s linear ;
-        }
-        #container img:nth-child(5){
-
-            transition: all 1.4s linear ;
-        }
-        #container .close{
-            animation: close 1.4s ease forwards;
-        }
-        @keyframes close {
-            from{
-                transform: rotate(0deg);
-            }
-            to{
-                transform: rotate(360deg);
-            }
-        }
-        #container .open{
-            animation: open 1.4s ease forwards;
-        }
-        @keyframes open {
-            from{
-                transform: rotate(0deg);
-            }
-            to{
-                transform: rotate(-360deg);
-            }
+        #home{
+            transition: transform 1s ease;
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
 <body>
 <div id="container">
-    <img src="img/close.png">
-    <img src="img/full.png">
-    <img src="img/open.png">
-    <img src="img/prev.png">
-    <img src="img/refresh.png">
-    <img src="img/home.png" class="">
+    <div id="menu">
+        <img src="img/close.png">
+        <img src="img/full.png">
+        <img src="img/open.png">
+        <img src="img/prev.png">
+        <img src="img/refresh.png">
+    </div>
+    <div id="home">
+        <img src="img/home.png">
+    </div>
 </div>
 <script>
-    var oContainer = document.getElementById('container');
-    var aImg = oContainer.getElementsByTagName('img');
-    /*var bFlag = false;*/
-    aImg[aImg.length-1].onclick = function(){
-        if(this.className == 'open'){
-            aImg[aImg.length-1].className = 'close';
-            aImg[0].style.transform="translatey(0px)"+"rotate(0deg)";
-            aImg[1].style.transform="translate(0px,0px)"+"rotate(0deg)";
-            aImg[2].style.transform="translate(0px,0px)"+"rotate(0deg)";
-            aImg[3].style.transform="translate(0px,0px)"+"rotate(0deg)";
-            aImg[4].style.transform="translate(0px,0px)"+"rotate(0deg)";
-            for(var i=0;i<aImg.length-1;i++){
-                aImg[i].onclick = function(){
-                    this.style.transform = "scale(2)";
-                }
+    var oHome = document.getElementById('home');
+    var oMenu = document.getElementById('menu');
+    var aImg = oMenu.getElementsByTagName('img');
+    var bFlag = false;
+    oHome.onclick = function(){
+        if(bFlag == false){
+            this.style.transform = "rotate(-360deg)";
+            for(var i=0;i<aImg.length;i++){
+                var x = -150*Math.cos(22.5*i*Math.PI/180);
+                var y = -150*Math.sin(22.5*i*Math.PI/180);
+                aImg[i].style.transform = " translate("+x+"px,"+y+"px) rotate(-360deg)";
+                aImg[i].style.transitionDelay = 50*(aImg.length-i)+"ms";
             }
-
         }else{
-            aImg[aImg.length-1].className = 'open';
-            aImg[0].style.transform="translatey(-160px)"+"rotate(360deg)";
-            aImg[1].style.transform="translate(-40px,-140px)"+"rotate(360deg)";
-            aImg[2].style.transform="translate(-80px,-120px)"+"rotate(360deg)";
-            aImg[3].style.transform="translate(-120px,-80px)"+"rotate(360deg)";
-            aImg[4].style.transform="translatex(-160px)"+"rotate(360deg)";
-
+            this.style.transform = "rotate(0deg)";
+            for(var i=0;i<aImg.length;i++){
+                aImg[i].style.transform = " translate(0,0) rotate(0deg)";
+                aImg[i].style.transitionDelay = 50*(i+1)+"ms";
+            }
         }
-        /*if(this.className == '' || this.className=='close'){
-        aImg[aImg.length-1].className = 'open';
-        }*/
-
+        bFlag = !bFlag;
     }
-;</script>
+    for(var i=0;i<aImg.length;i++){
+        aImg[i].currentTransform = '';
+        aImg[i].onclick = function(){
+            this.currentTransform = this.style.transform;
+            if(this.currentTransform.indexOf("scale(2)") ==-1){
+                this.style.transform = this.currentTransform + "scale(2)";
+            }else{
+                this.style.transform = this.currentTransform.replace(/scale\(2\)/g,'');
+            }
+            this.addEventListener("webkitTransitionEnd",fn);
+            function fn(){
+                if(this.currentTransform.indexOf("scale(2)") !=-1){
+                    this.currentTransform.replace(/scale\(2\)/g,'');
+                }
+                this.style.transform = this.currentTransform;
+                this.removeEventListener("webkitTransitionEnd", fn);
+            }
+        }
+    }
+</script>
 </body>
 </html>
