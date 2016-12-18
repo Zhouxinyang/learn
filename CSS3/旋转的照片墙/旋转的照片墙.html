@@ -33,7 +33,7 @@
             display: block;
             background-repeat: no-repeat;
             opacity: 0;
-            transition: all 1s ease-in-out;
+            /*transition: all 1s ease-in-out;*/
         }
     </style>
 </head>
@@ -104,7 +104,36 @@
                 if(TimerCount == 0){
                     clearInterval(Timer);
                 }
-            },30)
+            },30);
+
+
+            var flag = false;
+            oContainer.onclick = function(e){
+                clearInterval(Timer);
+                var target = e.target || window.event.srcElement;
+                if(target.className != 'img'){
+                    target = target.parentNode;
+                }
+                if(flag){//散着
+
+                }else{//合上
+                    for(var i=0;i<NUM;i++){
+                        aDiv[i].style.border = 1 + "px";
+                        aDiv[i].style.transform = "rotate(0deg)";
+                        aDiv[i].style.left = (bodyWidth-ImgWidth)/2 + (oDivWidth-8)*aDiv[i].pos.col + 'px';
+                        aDiv[i].style.top = (bodyHeight-ImgHeight)/2 + (oDivHeight-8)*aDiv[i].pos.row + 'px';
+                        var oSpan = aDiv[i].getElementsByTagName('span')[0];
+                        oSpan.style.backgroundImage = "url(img/"+ target.index+".jpg)";
+
+                        var x= - ThumbWidth * aDiv[i].pos.col;
+                        var y= - ThumbHeight * aDiv[i].pos.row;
+                        console.log(x+"----"+y);
+                        oSpan.style.backgroundPosition = x+ "px" + y +"px";
+                        oSpan.style.opacity = 1;
+                    }
+                }
+
+            }
 
 
 
