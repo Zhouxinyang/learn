@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
+<!doctype html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>photowall</title>
     <style>
         *{
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
         }
         html{
             width: 100%;
@@ -15,125 +15,163 @@
         body{
             width: 100%;
             height: 100%;
+      /*      background-image:url(img/bg.jpg) ;*/
         }
-         #container .img{
+        #container .img{
             width: 125px;
             height: 125px;
-            border: 5px solid #fff;
-            box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
-            position: absolute;
-            top: -200px;
-            left: -200px;
-            transition: all 1s ease-in-out;
+            border: 5px #ffffff solid;
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
             cursor: pointer;
+            position: absolute;
+            left: -300px;
+            top: -300px;
+            transition: all 1s ease-in-out;
         }
         #container span{
             width: 100%;
             height: 100%;
             display: block;
-            background-repeat: no-repeat;
+            background-repeat:no-repeat ;
             opacity: 0;
-            /*transition: all 1s ease-in-out;*/
+            transition: all 1s ease-in-out;
         }
+
     </style>
 </head>
 <body>
-<div id="container"></div>
+    <div id="container"></div>
+    <span id="prev"></span>
+    <span id=""></span>
 <script>
     (function(){
+        var oContainer = document.getElementById('container');
         var ROW = 4,
                 COL = 6,
                 NUM = ROW*COL,
-                ThumbWidth = 125,
-                ThumbHeight = 125,
-                ImgWidth = 750,
-                ImgHeight = 500;
+                thumbsWidth = 125,
+                thumbsHeight = 125,
+                bigWidth = 750,
+                bigHeight = 500;
         var count = 0;
-        var oContainer = document.getElementById('container');
         for(var i=0;i<NUM;i++){
             var oThumbImg = new Image();
             oThumbImg.onload = function(){
                 count++;
-                if(count == NUM*2){
+                if(count==NUM*2){
                     loadSuccess();
                 }
-            };
+            }
             oThumbImg.src = "img/thumbs/"+(i+1)+".jpg";
-
 
             var oBigImg = new Image();
             oBigImg.onload = function(){
                 count++;
-                if(count == NUM*2){
+                if(count==NUM*2){
                     loadSuccess();
                 }
-            };
-            oBigImg.src = "img/"+(i+1)+ ".jpg";
+            }
+            oBigImg.src = "img/"+(i+1)+".jpg";
         }
-        var Timer;
+        var timer;
         function loadSuccess(){
             var index = 0;
-            for(var i =0;i<ROW;i++){
+            for(var i=0;i<ROW;i++){
                 for(var j=0;j<COL;j++){
                     index++;
                     var oDiv = document.createElement('div');
                     oDiv.style.backgroundImage = "url(img/thumbs/"+index+".jpg)";
                     oDiv.className = "img";
-                    oDiv.pos ={
-                        row : i,
-                            col : j
+                    oDiv.pos = {
+                        row:i,
+                            col:j
                     };
-                    oDiv.innerHTML = "<span></span>";
                     oDiv.index = index;
+                    oDiv.innerHTML = "<span></span>";
                     oContainer.appendChild(oDiv);
                 }
             }
-            var aDiv = oContainer.getElementsByTagName('div');
-            var bodyWidth = document.body.clientWidth;
-            var bodyHeight = document.body.clientHeight;
-            var oDivWidth = aDiv[0].offsetWidth;
-            var oDivHeight = aDiv[0].offsetHeight;
-            var iColGap = (bodyWidth-COL*oDivWidth)/(COL+1);
-            var iRowGap = (bodyHeight-ROW*oDivHeight)/(ROW+1);
-            var TimerCount = NUM;
-            Timer = setInterval(function(){
-                TimerCount--;
-                aDiv[TimerCount].style.top = (iRowGap+oDivHeight)*aDiv[TimerCount].pos.row+iRowGap+'px';
-                aDiv[TimerCount].style.left = (iColGap+oDivWidth)*aDiv[TimerCount].pos.col+iColGap+'px';
-                aDiv[TimerCount].style.transform = "rotate("+(Math.random()*40-20)+"deg)";
-                if(TimerCount == 0){
-                    clearInterval(Timer);
-                }
-            },30);
 
+        var aDiv = oContainer.getElementsByTagName("div");
+        console.log(aDiv[0]);
+        var oDivWidth = aDiv[0].offsetWidth;
+        var oDivHeight = aDiv[0].offsetHeight;
+        var bodyWidth = document.body.clientWidth;
+        var bodyHeight = document.body.clientHeight;
+        var iRowGap = (bodyHeight-oDivHeight*ROW)/(ROW+1);
+        var iColGap = (bodyWidth-oDivWidth*COL)/(COL+1);
+        var timerCount = NUM;
+        timer = setInterval(function(){
+            timerCount--;
+            var x = (oDivWidth+iColGap)*aDiv[timerCount].pos.col + iColGap ;
+            var y = (oDivHeight+iRowGap)*aDiv[timerCount].pos.row + iRowGap ;
+            aDiv[timerCount].style.left = x + 'px';
+            aDiv[timerCount].style.top = y + 'px';
+            aDiv[timerCount].style.transform = "rotate("+(Math.random()*40-20)+"deg)";
+            if(timerCount == 0){
+                clearInterval(timer);
+            }
+        },50)
 
             var flag = false;
             oContainer.onclick = function(e){
-                clearInterval(Timer);
+                clearInterval(timer);
                 var target = e.target || window.event.srcElement;
-                if(target.className != 'img'){
+                if(target.className != "img"){
                     target = target.parentNode;
                 }
-                if(flag){//散着
-
-                }else{//合上
+                if(flag){
                     for(var i=0;i<NUM;i++){
-                        aDiv[i].style.border = 1 + "px";
-                        aDiv[i].style.transform = "rotate(0deg)";
-                        aDiv[i].style.left = (bodyWidth-ImgWidth)/2 + (oDivWidth-8)*aDiv[i].pos.col + 'px';
-                        aDiv[i].style.top = (bodyHeight-ImgHeight)/2 + (oDivHeight-8)*aDiv[i].pos.row + 'px';
+                        aDiv[i].style.borderWidth = 5+ 'px';
+                        aDiv[i].style.transform = "rotate("+(Math.random()*40-20)+"deg)"
+                        aDiv[i].style.left = (oDivWidth+iColGap)*aDiv[i].pos.col + iColGap + 'px';
+                        aDiv[i].style.top = (oDivHeight+iRowGap)*aDiv[i].pos.row + iRowGap  + 'px';
                         var oSpan = aDiv[i].getElementsByTagName('span')[0];
-                        oSpan.style.backgroundImage = "url(img/"+ target.index+".jpg)";
+                        oSpan.style.opacity = 0;
 
-                        var x= - ThumbWidth * aDiv[i].pos.col;
-                        var y= - ThumbHeight * aDiv[i].pos.row;
-                        console.log(x+"----"+y);
-                        oSpan.style.backgroundPosition = x+ "px" + y +"px";
-                        oSpan.style.opacity = 1;
                     }
+
+                }else{
+                    for(var i=0;i<NUM;i++){
+                        aDiv[i].style.borderWidth = 1 + 'px';
+                        aDiv[i].style.transform = "rotate(0deg)";
+                        aDiv[i].style.left = (bodyWidth-bigWidth)/2 + (oDivWidth-8)*aDiv[i].pos.col + 'px';
+                        aDiv[i].style.top = (bodyHeight-bigHeight)/2 + (oDivHeight-8)*aDiv[i].pos.row + 'px';
+                        var oSpan = aDiv[i].getElementsByTagName('span')[0];
+                        oSpan.style.backgroundImage = "url(img/"+(target.index)+".jpg)";
+                        var x = -thumbsWidth * aDiv[i].pos.col;
+                        var y = -thumbsHeight * aDiv[i].pos.row;
+                        oSpan.style.backgroundPosition = x +"px "+ y +"px";
+                        console.log((bodyWidth-bigWidth)/2);
+                        console.log("x="+x+"y="+y);
+
+                        /*Span.style.backgroundPosition = -(thumbsWidth*aDiv[i].pos.col) + "px" + (-(thumbsHeight*aDiv[i].pos.row)) + "px";*/
+                        oSpan.style.opacity = 1;
+
+                    }
+
                 }
+                flag = !flag;
+
+
 
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -141,18 +179,6 @@
 
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -172,6 +198,7 @@
 
 
     })()
+
 </script>
 </body>
 </html>
