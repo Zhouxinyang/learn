@@ -52,7 +52,7 @@
     }
     for(var i=0;i<aImg.length;i++){
         aImg[i].style.position = 'absolute';
-        aImg[i].style.border = 0;
+        aImg[i].style.margin = 0;
 
     }
     for(var i=0;i<aImg.length;i++){
@@ -61,11 +61,12 @@
     function drag(elem){
         var iDisX = iDisY = 0;
         elem.onmousedown = function(e){
-            elem.style.zIndex = iZindex++;
+
             e = e || window.event;
             iDisX = e.clientX - elem.offsetLeft;
             iDisY = e.clientY - elem.offsetTop;
             document.onmousemove = function(e){
+                elem.style.zIndex = iZindex++;
                 e = e || window.event;
                 var iLeft = e.clientX - iDisX;
                 var iTop = e.clientY - iDisY;
@@ -78,8 +79,8 @@
                     var collideResult = collideTest(elem,aImg[i]);
                     if(collideResult){
                         aCollide.push(aImg[i])
-                        console.log(aCollide);
                     }
+                }
                     oNearest = getNearest(elem);
                     if(oNearest){
                         oNearest.className = 'collide';
@@ -87,7 +88,7 @@
                     aCollide = [];
                     return false;
 
-                }
+
             }
             document.onmouseup = function(){
                 document.onmousemove = null;
@@ -134,8 +135,8 @@
                 minDis = getDis(elem,aCollide[i]);
                 index = i;
             }
-            return aCollide[i];
         }
+        return aCollide[i];
 
     }
 
