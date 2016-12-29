@@ -63,9 +63,9 @@
     </style>
 </head>
 <body>
-    <div id="container"></div>
-    <span id="prev"></span>
-    <span id="next"></span>
+<div id="container"></div>
+<span id="prev"></span>
+<span id="next"></span>
 <script>
     (function(){
         var oContainer = document.getElementById('container');
@@ -110,33 +110,33 @@
                     oDiv.className = "img";
                     oDiv.pos = {
                         row:i,
-                            col:j
+                        col:j
                     };
                     oDiv.index = index;
                     oDiv.innerHTML = "<span></span>";
                     oContainer.appendChild(oDiv);
                 }
             }
-        var aDiv = oContainer.getElementsByTagName("div");
-        console.log(aDiv[0]);
-        var oDivWidth = aDiv[0].offsetWidth;
-        var oDivHeight = aDiv[0].offsetHeight;
-        var bodyWidth = document.body.clientWidth;
-        var bodyHeight = document.body.clientHeight;
-        var iRowGap = (bodyHeight-oDivHeight*ROW)/(ROW+1);
-        var iColGap = (bodyWidth-oDivWidth*COL)/(COL+1);
-        var timerCount = NUM;
-        timer = setInterval(function(){
-            timerCount--;
-            var x = (oDivWidth+iColGap)*aDiv[timerCount].pos.col + iColGap ;
-            var y = (oDivHeight+iRowGap)*aDiv[timerCount].pos.row + iRowGap ;
-            aDiv[timerCount].style.left = x + 'px';
-            aDiv[timerCount].style.top = y + 'px';
-            aDiv[timerCount].style.transform = "rotate("+(Math.random()*40-20)+"deg)";
-            if(timerCount == 0){
-                clearInterval(timer);
-            }
-        },50)
+            var aDiv = oContainer.getElementsByTagName("div");
+            console.log(aDiv[0]);
+            var oDivWidth = aDiv[0].offsetWidth;
+            var oDivHeight = aDiv[0].offsetHeight;
+            var bodyWidth = document.body.clientWidth;
+            var bodyHeight = document.body.clientHeight;
+            var iRowGap = (bodyHeight-oDivHeight*ROW)/(ROW+1);
+            var iColGap = (bodyWidth-oDivWidth*COL)/(COL+1);
+            var timerCount = NUM;
+            timer = setInterval(function(){
+                timerCount--;
+                var x = (oDivWidth+iColGap)*aDiv[timerCount].pos.col + iColGap ;
+                var y = (oDivHeight+iRowGap)*aDiv[timerCount].pos.row + iRowGap ;
+                aDiv[timerCount].style.left = x + 'px';
+                aDiv[timerCount].style.top = y + 'px';
+                aDiv[timerCount].style.transform = "rotate("+(Math.random()*40-20)+"deg)";
+                if(timerCount == 0){
+                    clearInterval(timer);
+                }
+            },50)
             var flag = false;
             oContainer.onclick = function(e){
                 clearInterval(timer);
@@ -166,7 +166,7 @@
                         var y = -thumbsHeight * aDiv[i].pos.row;
                         oSpan.style.backgroundPosition = x +"px "+ y +"px";
                         console.log((bodyWidth-bigWidth)/2);
-                       // console.log("x="+x+"y="+y);
+                        // console.log("x="+x+"y="+y);
                         oSpan.style.opacity = 1;
                         oNext.style.display = oPrev.style.display = "block";
                         iNow = target.index;
@@ -204,61 +204,22 @@
                 },20)
             }
 
-/*
-* 确定大体页面，写好空骨架及CSS中的BODY,HMTL样式
-* 预加载图片
-* 去JS中添加子节点DIV及内容SPAN，给DIV设置背景图片，去CSS设置DIV位置及动画飞入效果
-* 写缩略图onclick事件（注意target用法）：用标志位判断状态，若即将打开小图（
-                                            * 1.改变图片borderWidth
-                                            * 2.设置otate
-                                            * 3.Div重新定位
-                                            * 4.给span设置背景图片
-                                            * 5.改变backgroundPosition
-                                            * 6.改变左右按钮display
-                                            * 7.为左右按钮onclick事件设置iNow变量） 打开同index
-* 写左右按钮onclick事件（Math与Array相结合）*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            /*
+             * 确定大体页面，写好空骨架及CSS中的BODY,HMTL样式
+             * 预加载图片
+             * 去JS中添加子节点DIV及内容SPAN，给DIV设置背景图片，去CSS设置DIV位置及动画飞入效果
+             * 写缩略图onclick事件（注意target用法）：用标志位判断状态，若即将打开小图（
+             * 1.改变图片borderWidth
+             * 2.设置otate
+             * 3.Div重新定位
+             * 4.给span设置背景图片
+             * 5.改变backgroundPosition
+             * 6.改变左右按钮display
+             * 7.为左右按钮onclick事件设置iNow变量） 打开同index
+             * 写左右按钮onclick事件（Math与Array相结合）*/
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     })()
-
 </script>
 </body>
 </html>
