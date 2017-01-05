@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background-color: #000000;
+        }
+        #content{
+            width: 500px;
+            height: 300px;
+            position: relative;
+        }
+        #canvas1{
+            background-color: #ffffff;
+        }
+        #next{
+            width: 200px;
+            height: 50px;
+            background: #eeeeee;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+<canvas id="canvas1" width="500" height="300">
+</canvas>
+<input type="button" id="next" value="下一张"></div>
+<script>
+    var oContent = document.getElementById('content');
+    var oCanvas = document.getElementById('canvas1');
+    var oNext = document.getElementById('next');
+    var ctx = oCanvas.getContext('2d');
+    oCanvas.onmousedown = function(e){
+        ctx.moveTo(e.clientX, e.clientY);
+        oCanvas.onmousemove = function(e){
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke();
+        }
+            oCanvas.onmouseup = function () {
+            oCanvas.onmousemove = null;
+        }
+
+    }
+    oNext.onclick= function(){
+        var oCanvas = document.createElement('canvas');
+    }
+
+
+</script>
+</body>
+</html>
