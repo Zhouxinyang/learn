@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.12.4.js"></script>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #container{
+            margin: 20px;
+        }
+        ul{
+            list-style: none;
+            width: 200px;
+            height: 25px;
+            border: 1px solid #000000;
+        }
+
+        li{
+            float: left;
+            width: 15px;
+            height: 15px;
+            margin: 5px;
+            background: pink;
+            background-image: url('theme.gif');
+        }
+        .news{
+            width: 90px;
+            height: 30px;
+            background: #999999;
+            color: #ffffff;
+            float: left;
+            display: inline-block;
+            margin-top: 20px;
+            margin-right: 20px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .skin0{
+            background:#999;
+        }
+        .skin5{
+            background:#BB3BD9;
+        }
+        .skin4{
+            background:#E31559;
+        }
+        .skin3{
+            background:#08BECE;
+        }
+        .skin2{
+            background:#FBA60A;
+        }
+        .skin1{
+            background:#AFD400;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tabs">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <span class="news">实时新闻</span>
+    <span class="news">娱乐新闻</span>
+</div>
+<script>
+    $('li').each(function(index,elem){
+        $(this).css('background-position',-index*20+'px 0px')
+    });
+
+    var index = 0;
+    if(getCookie('num')){
+        index = getCookie('num');
+    }
+
+
+
+    $('li').on('click',function(){
+        $('li').each(function(index,elem){
+            $(this).css('background-position',-index*20+'px 0px')
+        });
+        $(this).css('background-position',-$(this).index()*20+'px -15px')
+        $('.news').attr('class','news').addClass('skin'+$(this).index());
+        setCookie('num',$(this).index(),7);
+    });
+    $('li').eq(index).trigger('click');
+
+
+
+
+    function setCookie(key,value,day){
+        var str = key +"="+value+";";
+        if(day){
+            var date = new Date();
+            date.setDate(date.getDate()+day);
+
+            str += 'expires='+date
+            ;
+        }
+        document.cookie = str;
+    }
+    function getCookie(key){
+        var str = document.cookie; //"age=18; name=xxx"
+
+        var arr = str.split('; ');  //['age=18','name=xxx'];
+
+        for(var i=0; i<arr.length; i++){
+            var arr1 = arr[i].split('=');  //['age','18']   ['name','xxx']
+            if(arr1[0] == key){
+                return arr1[1];
+            }
+        }
+    }
+</script>
+</body>
+</html>
