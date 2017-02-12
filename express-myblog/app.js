@@ -16,9 +16,22 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(session({
-    secret: '!@#$%^&*()_'
+app.use(cookieSession({
+  name: 'session',
+  keys: ['!@#$%^&*()_'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
+
+
+app.use(session({
+  secret: '!@#$%^&*()_',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

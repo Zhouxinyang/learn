@@ -4,7 +4,7 @@ define(function(require,exports,module){
          this.left = options.left;
          this.oImg = new Image();
          this.oImg.src = "./img/"+parseInt(Math.random()*4+1)+".png";
-         this.oImg.width = this.width;
+         this.oImg.style.width = this.width + "px";
          this.oImg.style.left = this.left +"px";
          options.container.appendChild(this.oImg);
       }

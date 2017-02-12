@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
+<!doctype html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Document</title>
 </head>
 <body>
-<canvas id="myCanvas" width="300" height="200" style="border:1px solid blue">
-    your browser does not support the canvas element.
-</canvas>
-<script type="text/javascript">
-    var c = document.getElementById('myCanvas');
-    var cxt = c.getContext('2d');
-    cxt.fillStyle = 'rgb(0,0,200)';
-    cxt.fillRect(10,20,100,100);
+<div id="container">
+
+</div>
+<script>
+    oContainer = document.getElementById('container');
+    oContainer.style.background = "red";
+    oContainer.style.width = 100 + 'px';
+    oContainer.style.height = 200+ "px";
 </script>
 </body>
 </html>

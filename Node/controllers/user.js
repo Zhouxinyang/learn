@@ -19,7 +19,7 @@ var userModel = require('../models/userModel');
             }
         });
     };
-exports.adminIndex = function(req,res){
+    exports.adminIndex = function(req,res){
     res.render('adminIndex',{user:req.session.loginUser});
 }
 
