@@ -1,0 +1,85 @@
+.container{
+    width: 500px;
+    height: 300px;
+    border: 1px solid #CCCCCC;
+    position: relative;
+}
+.content{
+    width: 500px;
+    height: 300px;
+}
+.content img{
+    width: 500px;
+    height: 300px;
+}
+.tab{
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+}
+.tab li{
+    width: 20px;
+    height: 20px;
+    background: #000;
+    margin-right: 5px;
+    color: #FFFFFF;
+    float: left;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+.arrows span{
+    width: 20px;
+    height: 20px;
+    background: #000;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    display: none;
+
+}
+.arrows span.bottom{
+    margin-right: 5px;
+    float: left;
+    display: block;
+}
+
+.arrows.bottom{
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+}
+/*.arrows.center{
+    position: absolute;
+}*/
+.arrows .center{
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+
+}
+.arrows .prev.center{
+    left: 0;
+
+}
+.arrows .next.center{
+
+    right: 0;
+
+}
+
+
+img{
+    display: none;
+}
+.select{
+    display: block;
+}
+li.selected {
+    background: orangered;
+}
+li.circle{
+    border-radius: 50%;
+}
