@@ -1,0 +1,22 @@
+body{
+    padding-top: 70px;
+}
+.navbar-inverse input[type="text"]{
+    background: #313131;
+    border: 0;
+    color: #999;
+}
+.navbar-inverse .navbar-form{
+    position: relative;
+}
+.navbar-inverse .navbar-form button{
+    position: absolute;
+    background: none;
+    border: 0;
+    top: 20%;
+    right: 20px;
+}
+.navbar-inverse .navbar-form .glyphicon{
+    color: #999;
+}
+
