@@ -1,5 +1,5 @@
 html,body{
-    color: #2c3e50;;
+    color: #2c3e50;
 }
 #header{
     width: 100%;
@@ -27,15 +27,114 @@ html,body{
     border-color: #2c3e50;
 }
 
-#aboutme h2{
+ h2{
     text-align: center;
     margin-top: 60px;
 }
-#aboutme hr{
-    margin-top: 20px;
+
+ hr{
+          display: block;
+          height: 4px;
+          width: 100px;
+          text-align: center;
+          background: #E87E04;
+          margin-bottom: 10px;
+
+
+}
+#about p{
+    margin: 20px;
+}
+#services{
+    background: url("../img/services-bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+
+#services .thumbnail{
+    border: none;
+    background: none;
+
+
+}
+#services h4{
+    text-align: center;
+    color: #E87E04;
+    text-shadow: 1px 1px #fff;
+}
+#portfolio ul{
+    margin-bottom: 40px;
+}
+#portfolio .hover-text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    margin: 0 auto;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.66);
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+#portfolio .portfolio-item:hover .hover-text{
+    opacity: 1;
+}
+/*#portfolio .portfolio-item:hover img{
+    width: 280px;
+    height: 250px;
+}*/
+
+#portfolio .portfolio-item .hover-bg>img{
+    margin-bottom: 70px;
+}
+
+
+#skills{
+    background: url("../img/skills-bg.jpg");
+    background-size: cover;
+    ackground-attachment: fixed;
+}
+#contact{
+    background: url("../img/achivements-bg.jpg");
+    background-size: cover;
+    ackground-attachment: fixed;
+}
+
+#contact p{
+    text-align: center;
+    color: #000000;
+    margin-bottom: 40px;
+}
+#contact .inr{
     margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid #eee;
+}
+#contact img{
+    margin-bottom: 10px;
+}
+#slicer{
+    display: block;
+    height: 2px;
+    width: 100%;
+    text-align: center;
+    background: #000;
+    margin-top: 60px;
+    margin-bottom: 10px;
+
+}
+#contact H3{
+    text-align: center;
+}
+#contact .form-horizontal{
+    color: #000;
+}
+#contact button{
+    display: block;
+    margin: 0 auto;
 }
 
 
@@ -46,6 +145,20 @@ html,body{
 
 
 
+
+
+
+
+
+
+
+@media (max-width: 992px){
+    #portfolio .portfolio-item .hover-bg>img{
+        margin-bottom: 30px;
+        width: 345px;
+        height: 260px;
+    }
+}
 @media (max-width: 768px) {
     #header{
         height: 347px;
@@ -70,6 +183,12 @@ html,body{
     #header a{
         margin: 0 12px;
     }
+    #portfolio .portfolio-item .hover-bg>img{
+        margin-bottom: 30px;
+        width: 600px;
+        height: 260px;
+    }
+
 
 
 
