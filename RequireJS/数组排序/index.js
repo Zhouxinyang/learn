@@ -1,5 +1,4 @@
 //requirejs
-
 require(["a"],function(arrSort){
 
     var arr = [3,2,5,1,11];
