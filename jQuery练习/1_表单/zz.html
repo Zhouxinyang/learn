@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * { margin:0; padding:0; }
+    </style>
+</head>
+<body>
+<input type="radio" name="choice" value="1">我是1
+<input type="radio" name="choice" value="2">我是2
+<input type="radio" name="choice" value="3">我是3
+<input type="radio" name="choice" value="4">我是4
+<input type="radio" name="choice" value="5">我是5<br>
+<input type="text" id="kuangkuang" value="">框框<br>
+<input type="button" id="btn" value="阿牛">
+<script src="../jquery-1.12.4.js"></script>
+
+<script>
+    $("#btn").on('click',function(){
+        var num = $('#kuangkuang').val();
+       /*var  aa =*/
+        $(':radio[value='+num+']').prop('checked',true);
+      /*  $(":radio[value="+num+"]").prop('checked',true);*/
+    /*    console.log($(':radio[value=num]'));*/
+    })
+</script>
+</body>
+</html>
