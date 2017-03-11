@@ -15,8 +15,8 @@
             <div class="row">
                 <h1>Hello, I'm Chris James</h1>
                 <p>UI/UX Designer & Front End Developer</p>
-                <a class="btn btn-default btn-lg" href="#" role="button">About Me</a>
-                <a class="btn btn-default btn-lg" href="#" role="button">My Portfolio</a>
+                <a class="btn btn-default btn-lg" href="#about" role="button">About Me</a>
+                <a class="btn btn-default btn-lg" href="#portfolio" role="button">My Portfolio</a>
             </div>
         </div>
     </div>
@@ -36,25 +36,255 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">ABOUT</a></li>
-                        <li><a href="#">SERVICES</a></li>
-                        <li><a href="#">PORTFOLIO</a></li>
-                        <li><a href="#">SKILLS</a></li>
-                        <li><a href="#">RESUME</a></li>
-                        <li><a href="#">TESTIMONIALS</a></li>
-                        <li><a href="#">CONTACT</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#services">SERVICES</a></li>
+                        <li><a href="#portfolio">PORTFOLIO</a></li>
+                        <li><a href="#skills">SKILLS</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </nav>
     </div>
-    <div id="aboutme">
-        <hr class="container">
+    <div id="about">
+        <div class="container">
             <h2>ABOUT ME</h2>
-            <hr></hr>
+            <hr>
+        <div class="text-center">
+            <img src="img/about.jpg" class=".img-responsive .center-block img-circle" alt=""/>
+        </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut autem beatae, ea et exercitationem incidunt, iste iusto nisi non praesentium quam qui recusandae saepe sapiente tempora velit veritatis voluptatibus?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut autem beatae, ea et exercitationem incidunt, iste iusto nisi non praesentium quam qui recusandae saepe sapiente tempora velit veritatis voluptatibus?</p>
+        </div>
+    </div>
+    <div id="services">
+        <div class="container">
+            <h2>MY SERVICES</h2>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3 col-md-6">
+                    <div class="thumbnail">
+                        <img src="img/computer.png" alt="...">
+                        <div class="caption">
+                            <h4>Web Design</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim esse, expedita. Adipisci animi architecto asperiores dicta doloribus exercitationem fugit nemo neque numquam obcaecati optio perferendis, quo sit temporibus vero voluptas!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-6">
+                    <div class="thumbnail">
+                        <img src="img/development.png" alt="...">
+                        <div class="caption">
+                            <h4>Development</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim esse, expedita. Adipisci animi architecto asperiores dicta doloribus exercitationem fugit nemo neque numquam obcaecati optio perferendis, quo sit temporibus vero voluptas!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-6">
+                    <div class="thumbnail">
+                        <img src="img/Marketing.png" alt="...">
+                        <div class="caption">
+                            <h4>Marketing</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim esse, expedita. Adipisci animi architecto asperiores dicta doloribus exercitationem fugit nemo neque numquam obcaecati optio perferendis, quo sit temporibus vero voluptas!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-6">
+                    <div class="thumbnail">
+                        <img src="img/Branding.png" alt="...">
+                        <div class="Branding">
+                            <h4>Web Design</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim esse, expedita. Adipisci animi architecto asperiores dicta doloribus exercitationem fugit nemo neque numquam obcaecati optio perferendis, quo sit temporibus vero voluptas!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="portfolio">
+        <div class="container">
+            <h2>MY PORTFOLIO</h2>
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores aspernatur consequuntur placeat. Dolore, ullam ut. Architecto autem esse expedita illum ipsum labore perspiciatis, quis suscipit veritatis voluptatem. At, culpa.</p>
+            <ul class="nav nav-pills nav-justified">
+                <li class="active" id="all"><a>all</a></li>
+                <li id="Web"><a>web Design</a></li>
+                <li id="App"><a>App Development</a></li>
+                <li id="Branding"><a>Branding</a></li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-6 col-md-3 col-lg-3 web all">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <img src="img/portfolio/01.jpg" class="img-responsive" alt="Project Title">
+                         <!--   <a href="img/portfolio/01.jpg" title="Project description" rel="prettyPhoto">sadsd</a>-->
+                            <div class="hover-text">
+                                <h4>Project Title</h4>
+                                <small>Web Design</small>
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3  app all">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <img src="img/portfolio/02.jpg" class="img-responsive" alt="Project Title">
+                            <!--   <a href="img/portfolio/01.jpg" title="Project description" rel="prettyPhoto">sadsd</a>-->
+                            <div class="hover-text">
+                                <h4>Project Title</h4>
+                                <small>Web Design</small>
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 web all">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <img src="img/portfolio/03.jpg" class="img-responsive" alt="Project Title">
+                            <!--   <a href="img/portfolio/01.jpg" title="Project description" rel="prettyPhoto">sadsd</a>-->
+                            <div class="hover-text">
+                                <h4>Project Title</h4>
+                                <small>Web Design</small>
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 app all">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <img src="img/portfolio/04.jpg" class="img-responsive" alt="Project Title">
+                            <!--   <a href="img/portfolio/01.jpg" title="Project description" rel="prettyPhoto">sadsd</a>-->
+                            <div class="hover-text">
+                                <h4>Project Title</h4>
+                                <small>Web Design</small>
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3  web all">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <img src="img/portfolio/05.jpg" class="img-responsive" alt="Project Title">
+                            <!--   <a href="img/portfolio/01.jpg" title="Project description" rel="prettyPhoto">sadsd</a>-->
+                            <div class="hover-text">
+                                <h4>Project Title</h4>
+                                <small>Web Design</small>
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 app all">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <img src="img/portfolio/06.jpg" class="img-responsive " alt="Project Title">
+                            <!--   <a href="img/portfolio/01.jpg" title="Project description" rel="prettyPhoto">sadsd</a>-->
+                            <div class="hover-text">
+                                <h4>Project Title</h4>
+                                <small>Web Design</small>
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 web all">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <img src="img/portfolio/07.jpg" class="img-responsive " alt="Project Title">
+                            <!--   <a href="img/portfolio/01.jpg" title="Project description" rel="prettyPhoto">sadsd</a>-->
+                            <div class="hover-text">
+                                <h4>Project Title</h4>
+                                <small>Web Design</small>
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 branding all">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <img src="img/portfolio/08.jpg" class="img-responsive" alt="Project Title">
+                            <!--   <a href="img/portfolio/01.jpg" title="Project description" rel="prettyPhoto">sadsd</a>-->
+                            <div class="hover-text">
+                                <h4>Project Title</h4>
+                                <small>Web Design</small>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="skills">
+        <div class="container">
+            <h2>MY SKILLS</h2>
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cumque labore obcaecati provident quas similique soluta. Accusantium animi consequuntur, corporis ex incidunt sequi vitae! Dolorem non, quae. Enim, expedita obcaecati.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cumque labore obcaecati provident quas similique soluta. Accusantium animi consequuntur, corporis ex incidunt sequi vitae! Dolorem non, quae. Enim, expedita obcaecati.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cumque labore obcaecati provident quas similique soluta. Accusantium animi consequuntur, corporis ex incidunt sequi vitae! Dolorem non, quae. Enim, expedita obcaecati.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cumque labore obcaecati provident quas similique soluta. Accusantium animi consequuntur, corporis ex incidunt sequi vitae! Dolorem non, quae. Enim, expedita obcaecati.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cumque labore obcaecati provident quas similique soluta. Accusantium animi consequuntur, corporis ex incidunt sequi vitae! Dolorem non, quae. Enim, expedita obcaecati.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cumque labore obcaecati provident quas similique soluta. Accusantium animi consequuntur, corporis ex incidunt sequi vitae! Dolorem non, quae. Enim, expedita obcaecati.</p>
+        </div>
+    </div>
+    <div id="contact">
+        <div class="container">
+            <h2>MY CONTACT</h2>
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores aspernatur consequuntur placeat. Dolore, ullam ut. Architecto autem esse expedita illum ipsum labore perspiciatis, quis suscipit veritatis voluptatem. At, culpa.</p>
+
+            <div class="row">
+                <div class="col-md-4 .center-block inr">
+                    <img src="img/location.png" class="img-responsive center-block" alt=""/>
+                    <p>东北林业大学</p>
+                </div>
+                <div class="col-md-4 inr">
+                    <img src="img/email.png" class="img-responsive center-block" alt=""/>
+                    <p>741244407@qq.com</p>
+                </div>
+                <div class="col-md-4 inr">
+                    <img src="img/tele.png" class="img-responsive center-block" alt=""/>
+                    <p>18800438227</p>
+                </div>
+                <hr id="slicer">
+                <h3>LEAVE ME A MESSAGE</h3>
+            </div>
+
+                <form class="form-horizontal .center-block">
+                    <div class="form-group">
+                        <label for="name" class="sr-only">name</label>
+                            <input type="email" class="form-control  col-md-6" id="name" placeholder="NAME">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="sr-only">email</label>
+                            <input type="password" class="form-control  col-md-6" id="email" placeholder="EMAIL">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" placeholder="message"></textarea>
+                    </div>
+                    <div class="form-group center-block">
+                            <button type="submit" class="btn btn-primary btn-md">send message</button>
+                    </div>
+                </form>
+
         </div>
     </div>
 <script src="lib/jquery-1.12.4.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+
+
 </body>
 </html>

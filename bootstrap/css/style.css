@@ -13,10 +13,18 @@ body{
     position: absolute;
     background: none;
     border: 0;
-    top: 20%;
+    top: 30%;
     right: 20px;
+}
+@media (min-width: 768px) {
+    .navbar-inverse .navbar-form button{
+        top: 20%
+    }
 }
 .navbar-inverse .navbar-form .glyphicon{
     color: #999;
+}
+.navbar-inverse .profile {
+    margin-right: 25px;
 }
 

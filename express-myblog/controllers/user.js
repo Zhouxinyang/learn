@@ -13,12 +13,12 @@ exports.logout = function(req, res) {
 exports.reg = function(req, res) {
     res.render('reg');
 };
-
+syncfanvv
 exports.checkLogin = function(req, res) {
     var username = req.body.uname;
     var password = req.body.pwd;
 
-    userModel.queryByNamePwd(username, password, function (result) {
+    userModel.queryByNamePwd(username, password,   function (result) {
         if(result.length > 0){
             var user = result[0];
             req.session.loginUser =  user;//{user_id:1, username:'lisi'}

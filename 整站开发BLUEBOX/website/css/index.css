@@ -13,6 +13,7 @@
     background-repeat: no-repeat;
     top: 50%;
     margin-top: -25px;
+    z-index: 9999;
 }
 #banner .prev{
     background-position: 0 -14px;
@@ -22,3 +23,24 @@
     background-position: -29px -14px;
     right: 0;
 }
+#content{
+    width: 583px;
+    height: 100%;
+    left: 50%;
+    margin-left: -291px;
+    top: 50%;
+    margin-top: -166px;
+    position: absolute;
+    /*overflow: hidden;*/
+}
+#banner-content{
+    width: 3000px;
+    height: 333px;
+    position: absolute;
+
+}
+#banner-content img{
+    float: left;
+}
+/*
+#banner content*/
