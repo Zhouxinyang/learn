@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>life</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
@@ -13,41 +20,35 @@
 <script type="text/babel">
     var Counter = React.createClass({
         getDefaultProps : function(){
-            console.log("getDefaultProps");
+            console.log('getDefaultProps');
             return {};
         },
         getInitialState : function(){
-            console.log("getInitialState");
+            console.log('getInitialState');
             return {
                 count : 0
             };
         },
         componentWillMount : function(){
-            console.log("componentWillMount");
+            console.log('componentWillMount');
             this.timer = setInterval(function(){
                 this.setState({
                     count : this.state.count + 1
                 });
-            }.bind(this), 1000);
+            }.bind(this),1000);
         },
         componentDidMount : function(){
-            console.log("componentDidMount");
-
+            console.log('componentDidMount');
         },
         shouldComponentUpdate : function(){
-            console.log("shouldComponentUpdate");
-            /*if(this.state.count > 5){
-             return false;
-             }*/
-            return true;
+           console.log("shouldComponentUpdate");
+           return true;
         },
         componentWillUpdate : function(){
             console.log("componentWillUpdate");
-
         },
         componentDidUpdate : function(){
             console.log("componentDidUpdate");
-
         },
         componentWillUnmount : function(){
             console.log("componentWillUnmount");
@@ -57,23 +58,20 @@
             ReactDOM.unmountComponentAtNode(document.getElementById('app'));
         },
         render : function(){
-            console.log("render");
             return (
-                    <div>
-                        <button onClick={this.clickHandler}>销毁组件</button>
-                        <p>{this.state.count}</p>
-                    </div>
+                <div>
+                    <button>销毁按钮</button>
+                    <p>{this.state.count}</p>
+                </div>
             );
         }
     });
     ReactDOM.render(
-            <Counter/>,
-        document.getElementById("app")
+        <Counter/>,
+        document.getElementById('app')
     );
-
 </script>
-
-
-
+</body>
+</html>
 </body>
 </html>
