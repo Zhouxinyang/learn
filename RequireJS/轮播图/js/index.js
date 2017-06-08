@@ -26,7 +26,6 @@ require([/*"jquery",*/"carousel"],function(Carousel){
     };
     var lbt2 = new Carousel();
     lbt2.init(settings2);
-
     var arr3 = ["img/1.jpg", "img/2.jpg", "img/3.jpg"]
     var settings3 = {
         selector : "#container3",

@@ -6,14 +6,37 @@
 </head>
 <body>
 <script>
-//    aa();
-//    function aa(){
-//    };
-//    console.log(aa());
-var arr = [2,3,4,5];
-for(var i in arr){
-    console.log(arr[i]);
-}
+
+    var obj1 = {
+        name : "zhangsan",
+        age : 20,
+        father : {
+            name : "zhangxx",
+            age : 50
+        }
+    };
+
+
+
+
+    function clone(obj){
+        var newObj = {};
+        for(var p in obj){
+            if(typeof(obj[p]) == "object"){//这里如果不判断obj[p]的属性就会出现 当发生obj1.father.name = "zhangyy";时obj2还是会跟着改变。因为obj1的father和obj2的father都是对象，如果不对father进行深拷贝，obj1.father和obj2.Father还是会指向同一片内存。
+//        console.log(obj2.father);
+                //arguments.callee（）递归调用函数
+                newObj[p] = clone(obj[p]);//可以换成newObj[p] = arguments.callee(obj[p]);
+
+            }else{
+                newObj[p] = obj[p];
+            }
+        }
+        return newObj;
+    }
+
+    //        var obj2 = clone(obj1);
+    //        obj1.father.name = "zhangyy";
+    //        console.log(obj2.father);
 
 
 
