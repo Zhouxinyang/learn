@@ -8,13 +8,13 @@
 </head>
 <body>
 <script>
-
+    //方式1
     //var bb = aa.replace(/ /g, "");
     function checkInfo (str) {
         // 过滤掉空格&&转换成数组
         var arrStr = str.replace(/\s|\xA0/g, "").split('');
         var gg = {};
-        for(var i=0; i<arrStr.length;i++) {
+        for(var i=0; i < arrStr.length;i++) {
             var count = 0;
             ifHave(str.replace(/\s|\xA0/g, ""), arrStr[i], count);
             gg[arrStr[i]] = count;
@@ -37,6 +37,23 @@
     var aa = "hello  world yhh 阿巴瑟";
 
     console.log(checkInfo(aa));
+
+   // 方式2
+    function fn(str){
+        var obj ={};
+        for(var i=0;i<str.length;i++){
+            if(obj[str.charAt(i)]){
+                obj[str.charAt(i)] =  obj[str.charAt(i)] + 1;
+            }else{
+                obj[str.charAt(i)] = 1;
+            }
+        }
+        return obj;
+    }
+
+    var sss = 'welcome to ctve';
+
+    console.log(fn(sss));
 
 </script>
 </body>
