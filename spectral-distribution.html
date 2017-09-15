@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./a.css">
+
+</head>
+<body>
+<script>
+
+    //var bb = aa.replace(/ /g, "");
+    function checkInfo (str) {
+        // 过滤掉空格&&转换成数组
+        var arrStr = str.replace(/\s|\xA0/g, "").split('');
+        var gg = {};
+        for(var i=0; i<arrStr.length;i++) {
+            var count = 0;
+            ifHave(str.replace(/\s|\xA0/g, ""), arrStr[i], count);
+            gg[arrStr[i]] = count;
+        }
+        return gg;
+    }
+    function ifHave (str, zimu, count) {
+        if (str.indexOf(zimu) > -1) {
+            count++;
+            console.log(count);
+            var nextStr = residual(str, zimu);
+            return ifHave(nextStr, zimu, count)
+        } else {
+            return false;
+        }
+    }
+    function residual (str, zimu) {
+        return str.substring(str.indexOf(zimu) + 1);
+    }
+    var aa = "hello  world yhh 阿巴瑟";
+
+    console.log(checkInfo(aa));
+
+</script>
+</body>
+</html>s
