@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<div id="container" style="height: 400px; min-width: 600px"></div>
+
+<script>
+    var actionListFirst = [
+        {
+            actionCode: '001',
+            actionIconType: 'circle',
+            actionTitle: '商圈地图／空置点信息',
+            actionOperate: {
+                style: '#9B9B9B',
+                text: '去编辑',
+            },
+            actionPart: true,
+            actionArrow: {
+                name: 'rightArrow',
+                color: '#454545'
+            },
+            actionTagStatus: null
+        },
+        {
+            actionCode: '002',
+            actionIconType: 'percent',
+            actionTitle: '自现调',
+            actionOperate: {
+                style: '#9B9B9B',
+                text: '填写信息',
+            },
+            actionPart: false,actionArrow: {
+            name: 'rightArrow',
+            color: '#454545'
+        },
+            actionTagStatus: null
+        },
+        {
+            actionCode: '003',
+            actionIconType: 'percent',
+            actionTitle: '自测客流',
+            actionOperate: {
+                style: '#9B9B9B',
+                text: '开始测量',
+            },
+            actionPart: false,
+            actionArrow: {
+                name: 'rightArrow',
+                color: '#454545'
+            },
+            actionTagStatus: null
+        },
+        {
+            actionCode: '004',
+            actionIconType: 'ok',
+            actionTitle: '产权资料',
+            actionOperate: {
+                style: '#9B9B9B',
+                text: '已认证',
+            },
+            actionPart: false,
+            actionArrow: {
+                name: 'rightArrow',
+                color: '#454545'
+            },
+            actionTagStatus: null
+        },
+        {
+            actionCode: '005',
+            actionIconType: 'clock',
+            actionTitle: '腹地客流',
+            actionOperate: {
+                style: '#9B9B9B',
+                text: '等待结果',
+            },
+            actionPart: true,
+            actionArrow: {
+                name: 'rightArrow',
+                color: '#454545'
+            },
+            actionTagStatus: null
+        },
+        {
+            actionCode: '006',
+            actionIconType: 'update',
+            actionTitle: '上传信息更新',
+            actionOperate: {
+                style: '#FF5200',
+                text: '去更新',
+            },
+            actionPart: true,
+            actionArrow: {
+                name: 'rightArrow',
+                color: '#454545'
+            },
+            actionTagStatus: null
+        },
+    ];
+    var actionStatus = [
+        {'001': {
+            iconStatus: 20,
+            tagStsatus: null
+        }
+        },
+        {'002': {
+            iconStatus: 80,
+            tagStsatus: null
+        }
+        }
+    ]
+
+    var actionMergeList = actionListFirst.map(function(item, index, array){
+        var result;
+        for(var i=0;i<actionStatus.length;i++){
+            if(actionStatus[i][item.actionCode] !== undefined) {
+                result = merge(item, actionStatus[i][item.actionCode]);
+                break;
+            }else {
+                result = item;
+            }
+        }
+        return result;
+    });
+    console.log(actionMergeList);
+
+    //浅拷贝
+    function merge(json1, json2){
+        var resultJsonObject={};
+        for(var attr in json1){
+            resultJsonObject[attr]=json1[attr];
+        }
+        for(var attr in json2){
+            resultJsonObject[attr]=json2[attr];
+        }
+        return resultJsonObject;
+    }
+    //深拷贝
+    function clone(obj) {
+        var newObj = new Object();
+        for(var p in obj) {
+            if(typeof obj[p]=='object'){
+                newObj[p]= clone(obj[p]);
+            }else{
+                newObj[p] = obj[p];
+            }
+        }
+        return newObj;
+    }
+
+</script>
+</body>
+</html>
