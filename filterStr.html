@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function filterStr (str) {
+        var result = str.split(/[^0-9]/).filter(function (item) {
+            return item != '';
+        })
+        return result;
+    }
+    var aa = 'df239423sds阿41西吧23';
+    console.log(filterStr(aa));
+</script>
+</body>
+</html>
