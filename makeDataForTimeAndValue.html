@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    function getRandArr(maxVal, quantity, startTime, endTime) {
+        //最大view值，ID个数，开始时间，结束时间
+        //随机数
+        function getRandom(s,e) {
+            return Math.random()*(e-s)+s;
+        }//随机时间
+        function getRandTime(startTime,endTime) {
+            var start = new Date(startTime).getTime();
+            var end = new Date(endTime).getTime();
+            var RandTime = [];
+            for (var a = 0; a <quantity; a++) {
+                var Time = start + (end - start) / quantity * a;
+                Time = new Date(Time);
+                Time = Time.getFullYear()+"-"+(Time.getMonth()+1)+"-"+Time.getDate()+" "+Time.getHours()+":"+Time.getMinutes()+":"+Time.getSeconds();
+                RandTime.push(Time);
+            }
+            return RandTime;
+
+        }
+        //随机生成ID
+        function generateUUID() {
+            var d = new Date().getTime();
+            var uuid = 'xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = (d + Math.random() * 16) % 16 | 0;
+                d = Math.floor(d / 16);
+                return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+            });
+            return uuid;
+        }
+        var st = startTime;
+        var et = endTime;
+        var arrT = getRandTime(st,et);
+        var RandArr = [];
+        for(var i=0; i<quantity; i++){
+            var obj = {
+                id: generateUUID(),
+                value: getRandom(1,maxVal).toFixed(2),
+                date : arrT[i]
+            };
+            RandArr.push(obj);
+        }
+        return RandArr;
+    }
+    var randArr = getRandArr(100, 50, '2017-10-1,11:15:15', '2017-10-11,11:15:15');
+    var rnd = getRandArr (100, 50,' 2017-10-1,11:15:15', '2017-10-11,11:15:15');
+    console.log(rnd);
+    function getDays(rnd) {
+        var timeArr = {};
+        var min = parseFloat(rnd[0]['value']);//假设最小值 为 数组第一个元素值
+        var max = parseFloat(rnd[0]['value']);
+        timeArr['maxTime'] = rnd[0]['date'];
+        timeArr['minTime'] = rnd[0]['date'];  //假设最小值的时间 为 数组第一个元素时间
+        for( var i = 0; i< rnd.length; i++) {  //循环数组,
+            if (min >  parseFloat(rnd[i]['value'])) { //如果当前元素值 小于最小值
+                min = parseFloat(rnd[i]['value']);  //把最小值替换成当前元素值
+                timeArr['minTime'] = rnd[i]['date']; //同时把最小时间替换成当前元素时间
+            }
+            if (max < parseFloat(rnd[i]['value'])) {
+                max = parseFloat(rnd[i]['value']);
+                timeArr['maxTime'] = rnd[i]['date'];
+            }
+        }
+        return timeArr;
+    }
+    console.log(getDays(rnd));
+</script>
+</body>
+</html>
