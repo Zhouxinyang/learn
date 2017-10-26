@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>horologe</title>
+</head>
+<body>
+    <canvas id="horologe" width="500" height="500">a horologe</canvas>
+    <script>
+        var horologe = document.getElementById('horologe');
+        if (horologe.getContext) {
+            var context = horologe.getContext("2d");
+            context.beginPath();
+            context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+            context.moveTo(194, 100);
+            context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+            context.moveTo(100, 100);
+            context.lineTo(100, 30);
+            context.moveTo(100, 100);
+            context.lineTo(60, 65);
+            context.font = "bold 14px Arial";
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            context.translate(100, 100);
+            for (var i = 1; i < 13; i++) {
+                var y = -80 * Math.cos(30 * i * Math.PI / 180);
+                var x = 80 * Math.sin(30 * i * Math.PI / 180);
+                context.fillText(i, x, y);
+                console.log(x,y)
+            }
+            // context.fillText("12", 0, -80);
+            // var y = -80 * Math.cos(30 * Math.PI / 180);
+            // var x = 80 * Math.sin(30 *  Math.PI / 180);
+            // context.fillText("1", x, y);
+
+            // context.rotate(20);
+            context.stroke();
+        }
+    </script>
+</body>
+</html>
